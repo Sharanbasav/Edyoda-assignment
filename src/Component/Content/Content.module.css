@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap');
+
+.mainContainer {
+  height: 2.68vh;
+  width: 32vw;
+}
+
+.main h1 {
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.leftDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  letter-spacing: 0.03em;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+}
+
+.content span {
+  color: #0096ff;
+}
