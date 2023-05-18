@@ -15,7 +15,7 @@ export default function Form() {
       name: "first",
       text: "12 Months Subscription",
       total_rs: 99,
-      perMonth_rs: 8,
+      perMonth_rs: 8
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export default function Form() {
       name: "second",
       text: "12 Months Subscription",
       total_rs: 179,
-      perMonth_rs: 15,
+      perMonth_rs: 15
     },
     {
       id: 3,
@@ -33,7 +33,7 @@ export default function Form() {
       name: "third",
       text: "6 Months Subscription",
       total_rs: 149,
-      perMonth_rs: 25,
+      perMonth_rs: 25
     },
     {
       id: 4,
@@ -42,18 +42,16 @@ export default function Form() {
       name: "four",
       text: "3 Months Subscription",
       total_rs: 99,
-      perMonth_rs: 33,
-    },
+      perMonth_rs: 33
+    }
   ];
 
   const [list, setList] = useState(price);
   const [value, setValue] = useState(149);
-  function handleChange(event, element) {
-    console.log(event.target.value - (event.target.value * 16.7) / 100);
-    setValue(
-      Math.floor(event.target.value - (event.target.value * 16.7) / 100)
-    );
-    list.forEach((x) => {
+  function handleChange(event, el) {
+    console.log(event.target.value - event.target.value * 16.7 / 100);
+    setValue(Math.floor(event.target.value - event.target.value * 16.7 / 100));
+    list.forEach(x => {
       x.recommend = false;
     });
     el.recommend = true;
@@ -73,41 +71,43 @@ export default function Form() {
           <span>Subscribe</span>
         </div>
       </div>
-      <p className={style.plan}>Select your subscription plan</p>
+      <p className={style.plan}>Select your subcription plan</p>
 
-      {list.map((element, id) => (
+      {list.map((el, ind) =>
         <div
-          id={element.name}
+          id={el.name}
           className={
-            element.recommend
+            el.recommend
               ? style.recommend
-              : element.offerExpired
-              ? style.expire
-              : style.inputBorder
+              : el.offerExpired ? style.expire : style.inputBorder
           }
         >
-          <label htmlFor={element.id}>
+          <label htmlFor={el.id}>
             <div>
               <input
-                checked={element.recommend}
-                disabled={element.offerExpired}
-                onChange={(event) => handleChange(event, element)}
-                id={element.id}
+                checked={el.recommend}
+                disabled={el.offerExpired}
+                onChange={event => handleChange(event, el)}
+                id={el.id}
                 type="radio"
-                value={element.total_rs}
+                value={el.total_rs}
                 name="priceOption"
               />
-              <span>{element.text}</span>
+              <span>
+                {el.text}
+              </span>
             </div>
             <div className={style.totalRupees}>
-              <span>Total ₹{element.total_rs}</span>
+              <span>
+                Total ₹{el.total_rs}
+              </span>
               <span className={style.month}>
-                ₹{element.perMonth_rs}/<span className={style.month}>mo</span>
+                ₹{el.perMonth_rs}/<span className={style.mo}>mo</span>
               </span>
             </div>
           </label>
         </div>
-      ))}
+      )}
       <div className={style.expired_flag}>
         <p>Offer expired</p>
       </div>
@@ -123,7 +123,9 @@ export default function Form() {
         <p>
           <span style={{ fontWeight: "600" }}>Total </span>(Incl. of 18% GST)
         </p>
-        <p style={{ fontWeight: "600", fontSize: "1.2rem" }}>₹{value}</p>
+        <p style={{ fontWeight: "600", fontSize: "1.2rem" }}>
+          ₹{value}
+        </p>
       </div>
 
       <div className={style.btn}>
@@ -131,7 +133,7 @@ export default function Form() {
         <button
           className={style.pay}
           onClick={() => {
-            alert(`You are Payment is Successful `);
+            alert(`You have sucessfully subscribed ₹${value}`);
           }}
         >
           PROCEED TO PAY
